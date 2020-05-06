@@ -22,7 +22,7 @@ class TestJavadoc(unittest.TestCase):
      *         emitted an item or sent a termination notification
      * @see <a href="http://reactivex.io/documentation/operators/amb.html">ReactiveX operators documentation: Amb</a>
      */ """
-        cleaned_docs = parse_java_lines([docstring])
+        cleaned_docs = clean_java_docstring(docstring)
         for cleaned_doc in cleaned_docs:
             print(cleaned_doc)
 
