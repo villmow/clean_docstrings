@@ -22,8 +22,9 @@ class TestJavadoc(unittest.TestCase):
      *         emitted an item or sent a termination notification
      * @see <a href="http://reactivex.io/documentation/operators/amb.html">ReactiveX operators documentation: Amb</a>
      */ """
-        cleaned_doc = clean_javadoc(docstring)
-        print(cleaned_doc)
+        cleaned_docs = parse_java_lines([docstring])
+        for cleaned_doc in cleaned_docs:
+            print(cleaned_doc)
 
     def test_remove_links(self):
 
@@ -34,7 +35,7 @@ class TestJavadoc(unittest.TestCase):
 
         print(docstring)
         print("#" * 20)
-        cleaned_doc = remove_javadoc_links(docstring, keep_inside=True)
+        cleaned_doc = remove_javadoc_tags(docstring, keep_inside=True)
         print(cleaned_doc)
         self.assertIn("Link1", cleaned_doc)
         self.assertIn("Link2", cleaned_doc)
@@ -43,7 +44,7 @@ class TestJavadoc(unittest.TestCase):
         self.assertNotIn("@link", cleaned_doc, "All @links should have been removed")
         self.assertNotIn("@ link", cleaned_doc, "All @links should have been removed")
 
-        cleaned_doc = remove_javadoc_links(docstring, keep_inside=False)
+        cleaned_doc = remove_javadoc_tags(docstring, keep_inside=False)
         self.assertNotIn("Link1", cleaned_doc)
         self.assertNotIn("Link3", cleaned_doc)
         self.assertNotIn("Link4", cleaned_doc)
@@ -55,7 +56,7 @@ class TestJavadoc(unittest.TestCase):
                     "@return {@code this % mod}."
 
         print(docstring)
-        cleaned_doc = remove_javadoc_code(docstring, keep_inside=True)
+        cleaned_doc = remove_javadoc_tags(docstring, keep_inside=True)
         print("#" * 20)
         print(cleaned_doc)
         self.assertIn("Geldbetrag", cleaned_doc)
@@ -65,7 +66,7 @@ class TestJavadoc(unittest.TestCase):
         self.assertNotIn("@code", cleaned_doc, "All @code should have been removed")
         self.assertNotIn("<code>", cleaned_doc, "All <code> should have been removed")
 
-        cleaned_doc = remove_javadoc_code(docstring, keep_inside=False)
+        cleaned_doc = remove_javadoc_tags(docstring, keep_inside=False)
         print("#" * 20)
         print(cleaned_doc)
         self.assertNotIn("Geldbetrag", cleaned_doc)
