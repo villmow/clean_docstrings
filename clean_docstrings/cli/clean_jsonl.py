@@ -36,8 +36,9 @@ def main(args):
         output = input.with_name(f".{input.name}.tmp")
 
     # open output filehandler
+    output_f = None
     if output is not None:
-        output = output.open("wt")
+        output_f = output.open("wt")
 
     func = partial(
         parse_line,
@@ -45,15 +46,16 @@ def main(args):
     )
     with mp.Pool(args.workers) as p, input.open("rt") as input_f:
         for out_line in p.imap(func, input_f, chunksize=25):
-            print(out_line, file=output)
+            print(out_line, file=output_f)
 
     # close output filehandler
-    if output is not None:
-        output.close()
-
+    if output_f is not None:
+        output_f.close()
+    if args.inplace:
+        output.replace(input)
 
 def parse_line(line: str, language: str, input_key: str, output_key: str):
-    line_dict = json.loads(line)
+    line_dict = json.loads(line.strip())
     line_dict[output_key] = clean(
         docstring=line_dict[input_key],
         language=language,
@@ -64,7 +66,7 @@ def parse_line(line: str, language: str, input_key: str, output_key: str):
         tokenize=True,
         fix_unicode=True
     )
-    return json.dumps(line_dict, sort_keys=True)
+    return json.dumps(line_dict, ensure_ascii=False)
 
 
 def cli_main():

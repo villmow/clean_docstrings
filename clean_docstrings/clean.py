@@ -135,12 +135,12 @@ def clean(
         docstring = extract_docstring_summary(docstring, language=language)
     if fix_unicode:
         docstring = fix_bad_unicode(docstring)
+    if no_urls:
+        docstring = remove_urls(docstring, replace_with=url_replacement)
     if no_html_tags:
         docstring = remove_html_tags(docstring)
     if no_doctags:
         docstring = remove_doctags(docstring, keep_inside=True, language=language)
-    if no_urls:
-        docstring = remove_urls(docstring, replace_with=url_replacement)
     if tokenize:
         docstring = tokenize_csn(docstring)
     return docstring
