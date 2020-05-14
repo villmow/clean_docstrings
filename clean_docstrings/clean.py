@@ -46,11 +46,7 @@ def _remove_javadoc_tags(text: str, keep_inside: bool = True) -> str:
 
 
 def remove_doctags(text: str, keep_inside: bool = True, language: Optional[str] = None):
-    if language == "java":
-        return _remove_javadoc_tags(text, keep_inside)
-
-    # do nothing
-    return text
+    return _remove_javadoc_tags(text, keep_inside)
 
 
 ##########################
