@@ -9,7 +9,7 @@ from typing import Optional, List
 # delimiters
 ##########################
 RE_C_STYLE_COMMENT_DELIMITERS = re.compile(
-    r"^\s*([/]?\s*[\*]+[ \t]*/?)|(//)",
+    r"(^\s*[/]?\s*[\*]+[ \t]*/?)|(^\s*//)",
     flags=re.MULTILINE
 )
 def remove_comment_delimiters(comment: str) -> str:
