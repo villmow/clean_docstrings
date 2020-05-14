@@ -1,5 +1,24 @@
 import unittest
-from clean_docstrings import strip_c_style_comment_delimiters, remove_comment_delimiters, remove_html_tags
+from clean_docstrings import remove_comment_delimiters, remove_html_tags
+
+
+def strip_c_style_comment_delimiters(comment: str) -> str:
+    """ This function was taken from codesearchnet """
+    comment_lines = comment.split('\n')
+    cleaned_lines = []
+    for l in comment_lines:
+        l = l.strip()
+        if l.endswith('*/'):
+            l = l[:-2]
+        if l.startswith('*'):
+            l = l[1:]
+        elif l.startswith('/**'):
+            l = l[3:]
+        elif l.startswith('//'):
+            l = l[2:]
+        cleaned_lines.append(l.strip())
+    return '\n'.join(cleaned_lines)
+
 
 class TestUtility(unittest.TestCase):
     def test_delimiters_compare_with_csn(self):
@@ -40,7 +59,6 @@ Scheduler:
             remove_comment_delimiters(docstring).strip(),
             docstring.strip(),
         )
-
 
     def test_html_tags_simple(self):
         docstring = """ some string 
