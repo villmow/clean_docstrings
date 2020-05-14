@@ -15,6 +15,7 @@ setup(name='clean_docstrings',
       },
       install_requires=[
             "clean_text",
+            "beautifulsoup4"
       ]
 )
 

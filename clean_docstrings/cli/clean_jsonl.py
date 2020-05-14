@@ -54,6 +54,7 @@ def main(args):
     if args.inplace:
         output.replace(input)
 
+
 def parse_line(line: str, language: str, input_key: str, output_key: str):
     line_dict = json.loads(line.strip())
     line_dict[output_key] = clean(
