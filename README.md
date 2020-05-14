@@ -1,6 +1,6 @@
 # clean-docstrings
 
-Offers cleaning of docstrings.
+Offers cleaning of docstrings in most programming languages (e.g. documentations of methods, classes).
 
 Features:
  - Extracts summary
@@ -8,7 +8,7 @@ Features:
  - Removes HTML
  - Removes Javadoc Tags (when language is set to "java")
  
-Install this package by cloning this repo executing
+Install this package by cloning this repo and executing
  ```bash
 pip install clean-docstrings 
 ```
@@ -44,7 +44,7 @@ clean(docstring, language="java", extract_summary=False,   no_comment_delimiters
 '\nMirrors the one ObservableSource in an Iterable of several ObservableSources that first either emits an item or sends\na termination notification.\n\n\n\nScheduler:\n amb does not operate by default on a particular  Scheduler.\n'
 ```
 
-This package installs `clean-docs-jsonl` that can be used from command line to clean all docstrings in
+This package installs a shell script: `clean-docs-jsonl` that can be used from command line to clean all docstrings in
 a `.jsonl` file. This script is consistent with the preprocessing in codesearchnet, but additionally cleans
 doctags, html and urls.
 
