@@ -1,6 +1,6 @@
 # clean-docstrings
 
-Offers generic cleaning of docstrings.
+Offers cleaning of docstrings.
 
 Features:
  - Extracts summary
@@ -38,6 +38,10 @@ docstring = """/**
      */ """
 clean(docstring, language="java", extract_summary=False,   no_comment_delimiters = True, no_html_tags = True, no_urls = True, url_replacement = "", tokenize = True, fix_unicode = True)
 >>> ['Mirrors', 'the', 'one', 'ObservableSource', 'in', 'an', 'Iterable', 'of', 'several', 'ObservableSources', 'that', 'first', 'either', 'emits', 'an', 'item', 'or', 'sends', 'a', 'termination', 'notification', '.', 'Scheduler', ':', 'amb', 'does', 'not', 'operate', 'by', 'default', 'on', 'a', 'particular', 'Scheduler', '.', 'the', 'common', 'element', 'type', 'sources', 'an', 'Iterable', 'of', 'ObservableSource', 'sources', 'competing', 'to', 'react', 'first', '.', 'A', 'subscription', 'to', 'each', 'source', 'will', 'occur', 'in', 'the', 'same', 'order', 'as', 'in', 'the', 'Iterable', '.', 'an', 'Observable', 'that', 'emits', 'the', 'same', 'sequence', 'as', 'whichever', 'of', 'the', 'source', 'ObservableSources', 'first', 'emitted', 'an', 'item', 'or', 'sent', 'a', 'termination', 'notification', 'ReactiveX', 'operators', 'documentation', ':', 'Amb']
+>>> clean(docstring, language="java", extract_summary=True,   no_comment_delimiters = True, no_html_tags = True, no_urls = True, url_replacement = "", tokenize = True, fix_unicode = True)
+['Mirrors', 'the', 'one', 'ObservableSource', 'in', 'an', 'Iterable', 'of', 'several', 'ObservableSources', 'that', 'first', 'either', 'emits', 'an', 'item', 'or', 'sends', 'a', 'termination', 'notification', '.', 'Scheduler', ':', 'amb', 'does', 'not', 'operate', 'by', 'default', 'on', 'a', 'particular', 'Scheduler', '.']
+>>> clean(docstring, language="java", extract_summary=True,   no_comment_delimiters = True, no_html_tags = True, no_urls = True, url_replacement = "", tokenize = False, fix_unicode = True)
+'\nMirrors the one ObservableSource in an Iterable of several ObservableSources that first either emits an item or sends\na termination notification.\n\n\n\nScheduler:\n amb does not operate by default on a particular  Scheduler.\n'
 ```
 
 This package installs `clean-docs-jsonl` that can be used from command line to clean all docstrings in
