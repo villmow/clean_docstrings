@@ -8,6 +8,11 @@ setup(name='clean_docstrings',
       author_email='johannes.villmow@hs-rm.de',
       license='gnu',
       packages=['clean_docstrings'],
+      entry_points={
+            'console_scripts': [
+                  'clean-docs-jsonl = clean_docstrings.cli.clean_jsonl:cli_main',
+            ],
+      },
       install_requires=[
             "clean_text",
       ]
