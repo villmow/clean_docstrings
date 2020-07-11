@@ -9,7 +9,7 @@ from typing import Optional, List
 # delimiters
 ##########################
 RE_C_STYLE_COMMENT_DELIMITERS = re.compile(
-    r"(^\s*[/]?\s*[\*]+[ \t]*/?)|(^\s*//)",
+    r"(^\s*[/]?\s*[\*]+[ \t]*/?)|(^\s*//)|(\s*[/]?\s*[\*]+[ \t]*/?$)",
     flags=re.MULTILINE
 )
 def remove_comment_delimiters(comment: str) -> str:
@@ -20,9 +20,12 @@ def remove_comment_delimiters(comment: str) -> str:
 # html tags
 ##########################
 def remove_html_tags(text: str) -> str:
-    soup = BeautifulSoup(text, features="html.parser")
-    return soup.get_text()
-
+    try:
+        soup = BeautifulSoup(text, features="html.parser")
+        return soup.get_text()
+    except TypeError as e:
+        print("[TypeError]", text)
+        raise e
 ##########################
 # javadoc tags
 ##########################
@@ -133,10 +136,14 @@ def clean(
         docstring = fix_bad_unicode(docstring)
     if no_urls:
         docstring = remove_urls(docstring, replace_with=url_replacement)
-    if no_html_tags:
-        docstring = remove_html_tags(docstring)
+    if no_html_tags and docstring:
+        try:
+            docstring = remove_html_tags(docstring)
+        except Exception as e:
+            pass
     if no_doctags:
         docstring = remove_doctags(docstring, keep_inside=True, language=language)
     if tokenize:
         docstring = tokenize_csn(docstring)
     return docstring
+

@@ -21,6 +21,12 @@ def strip_c_style_comment_delimiters(comment: str) -> str:
 
 
 class TestUtility(unittest.TestCase):
+    def test_delimiters_go(self):
+        docstring = """ // newGatewayCommand returns the cobra command for \"gateway\". """
+        self.assertSequenceEqual(
+            remove_comment_delimiters(docstring).strip(),
+            strip_c_style_comment_delimiters(docstring).strip(),
+        )
     def test_delimiters_compare_with_csn(self):
         docstring = """  /**
      * Mirrors the one ObservableSource in an Iterable of several ObservableSources that first either emits an item or sends
@@ -40,9 +46,14 @@ class TestUtility(unittest.TestCase):
      *         emitted an item or sent a termination notification
      * @see <a href="http://reactivex.io/documentation/operators/amb.html">ReactiveX operators documentation: Amb</a>
      */ """
+        our = remove_comment_delimiters(docstring).strip()
+        csn = strip_c_style_comment_delimiters(docstring).strip()
+        print(our)
+        print("#"*40)
+        print(csn)
         self.assertSequenceEqual(
-            remove_comment_delimiters(docstring).strip(),
-            strip_c_style_comment_delimiters(docstring).strip(),
+            our,
+            csn,
         )
     def test_delimiters_no(self):
         """
