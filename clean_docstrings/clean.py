@@ -119,14 +119,14 @@ def tokenize_csn(text: str) -> List[str]:
 # main function
 ##########################
 def clean(
-        docstring: str, language: Optional[str] = None,
-        extract_summary: bool = True,
-        no_comment_delimiters: bool = True,
-        no_html_tags: bool = True,
-        no_doctags: bool = True,
-        no_urls: bool = True, url_replacement: str = "",
-        tokenize: bool = True,
-        fix_unicode: bool = True
+    docstring: str, language: Optional[str] = None,
+    extract_summary: bool = True,
+    no_comment_delimiters: bool = True,
+    no_html_tags: bool = True,
+    no_doctags: bool = True,
+    no_urls: bool = True, url_replacement: str = "",
+    tokenize: bool = True,
+    fix_unicode: bool = True
 ):
     if no_comment_delimiters:
         docstring = remove_comment_delimiters(docstring)
@@ -146,4 +146,5 @@ def clean(
     if tokenize:
         docstring = tokenize_csn(docstring)
     return docstring
+
 
