@@ -24,8 +24,9 @@ def remove_html_tags(text: str) -> str:
         soup = BeautifulSoup(text, features="html.parser")
         return soup.get_text()
     except TypeError as e:
-        print("[TypeError]", text)
         raise e
+
+
 ##########################
 # javadoc tags
 ##########################
@@ -139,8 +140,10 @@ def clean(
     if no_html_tags and docstring:
         try:
             docstring = remove_html_tags(docstring)
-        except Exception as e:
+        except TypeError as e:
+            # ignore type errors
             pass
+
     if no_doctags:
         docstring = remove_doctags(docstring, keep_inside=True, language=language)
     if tokenize:
