@@ -2,13 +2,13 @@ from distutils.core import setup
 
 setup(name='clean_docstrings',
       packages=['clean_docstrings'],
-      version='0.1b',
+      version='0.1.1b',
       python_requires='>=3.7',
       description='Utility functions to clean docstrings in various programming languages',
       author='Johannes Villmow',
       author_email='johannes.villmow@hs-rm.de',
       url='https://github.com/villmow/clean_docstrings',
-      download_url='https://github.com/villmow/clean_docstrings/archive/refs/tags/v0.1b.tar.gz',
+      download_url='https://github.com/villmow/clean_docstrings/archive/refs/tags/v0.1.1b.tar.gz',
       license='Apache License 2.0',
       entry_points={
             'console_scripts': [
