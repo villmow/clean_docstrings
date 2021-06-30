@@ -125,8 +125,8 @@ def clean(
     no_comment_delimiters: bool = True,
     no_html_tags: bool = True,
     no_doctags: bool = True,
-    no_urls: bool = True, url_replacement: str = "",
-    tokenize: bool = True,
+    no_urls: bool = True, url_replacement: str = "<URL>",
+    tokenize: bool = False,
     fix_unicode: bool = True
 ):
     if no_comment_delimiters:
