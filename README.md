@@ -1,4 +1,4 @@
-# clean-docstrings
+pi p# clean-docstrings
 
 Offers cleaning of docstrings in most programming languages (e.g. documentations of methods, classes).
 

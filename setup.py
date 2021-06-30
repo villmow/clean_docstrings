@@ -23,8 +23,11 @@ setup(name='clean_docstrings',
       classifiers=[
             'Development Status :: 4 - Beta',  # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
             'Intended Audience :: Developers',  # Define that your audience are developers
-            'Topic :: Software Development :: Build Tools',
-            'License :: OSI Approved :: Apache License',
+            'Topic :: Software Development',
+            'Topic :: Software Development :: Documentation',
+            'Topic :: Scientific/Engineering',
+            'Topic :: Scientific/Engineering :: Artificial Intelligence',
+            'License :: OSI Approved :: Apache Software License',
             'Programming Language :: Python :: 3',
       ],
 )
