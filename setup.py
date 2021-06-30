@@ -8,7 +8,7 @@ setup(name='clean_docstrings',
       author='Johannes Villmow',
       author_email='johannes.villmow@hs-rm.de',
       url='https://github.com/villmow/clean_docstrings',
-      download_url='https://github.com/villmow/clean_docstrings/archive/refs/tags/v0.1.1b.tar.gz',
+      download_url='https://github.com/villmow/clean_docstrings/archive/refs/tags/v0.1.tar.gz',
       license='Apache License 2.0',
       entry_points={
             'console_scripts': [
