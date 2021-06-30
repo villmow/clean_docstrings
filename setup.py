@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(name='clean_docstrings',
       packages=['clean_docstrings'],
-      version='0.1.1b',
+      version='0.1',
       python_requires='>=3.7',
       description='Utility functions to clean docstrings in various programming languages',
       author='Johannes Villmow',
