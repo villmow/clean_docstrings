@@ -17,7 +17,8 @@ setup(name='clean_docstrings',
       },
       install_requires=[
             "clean_text",
-            "beautifulsoup4"
+            "beautifulsoup4",
+            "unidecode"
       ],
       keywords=['source code', 'comment', 'cleaning', 'comment cleaning'],  # Keywords that define your package best
       classifiers=[
