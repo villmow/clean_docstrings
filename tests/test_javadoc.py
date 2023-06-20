@@ -25,6 +25,28 @@ class TestJavadoc(unittest.TestCase):
         cleaned_doc = clean(docstring, language="java", extract_summary=False, no_html_tags=True)
         print(cleaned_doc)
 
+    def test_sample1_with_summary(self):
+        docstring = """/**
+     * Mirrors the one ObservableSource in an Iterable of several ObservableSources that first either emits an item or sends
+     * a termination notification.
+     * <p>
+     * <img width="640" height="385" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/amb.png" alt="">
+     * <dl>
+     *  <dt><b>Scheduler:</b></dt>
+     *  <dd>{@code amb} does not operate by default on a particular {@link Scheduler}.</dd>
+     * </dl>
+     *
+     * @param <T> the common element type
+     * @param sources
+     *            an Iterable of ObservableSource sources competing to react first. A subscription to each source will
+     *            occur in the same order as in the Iterable.
+     * @return an Observable that emits the same @link sequence as whichever of the source ObservableSources first
+     *         emitted an item or sent a termination notification
+     * @see <a href="http://reactivex.io/documentation/operators/amb.html">ReactiveX operators documentation: Amb</a>
+     */ """
+        cleaned_doc = clean(docstring, language="java", extract_summary=False, no_html_tags=True)
+        print(cleaned_doc)
+
     def test_remove_links(self):
 
         docstring = "This is {@link Link1}. " \
